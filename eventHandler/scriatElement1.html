@@ -1,0 +1,24 @@
+<!-- Создайте кнопку, которая будет скрывать себя по нажатию. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="button">save</button>
+  <script>
+    const buttonElement = document.getElementById('button');
+    buttonElement.addEventListener('click', () => {
+      buttonElement.hidden = true;
+    })
+
+   /*  или
+    < input type = "button" onclick = "this.hidden=true" value = "Нажми, чтобы спрятать" > */
+  </script>
+</body>
+
+</html>
