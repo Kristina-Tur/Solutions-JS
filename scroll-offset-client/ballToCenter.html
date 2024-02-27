@@ -1,0 +1,53 @@
+<!-- Поместите мяч в центр поля -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . .
+  </div>
+  <script>
+    /* let width, height;
+
+//Если изображение еще не загрузилось, то `clientWidth` будет равно 0
+    elemBall.onload = function () {
+      let width = elemBall.clientWidth;
+      let height = elemBall.clientHeight;
+      //Этот код установит обработчик события загрузки изображения, и когда изображение будет загружено, ширина будет выведена
+    };; 
+    И в этом примере я явно задала ширину и высоту в CSS, чтобы не было проблем при загрузке страницы*/
+    let elemField = document.getElementById('field');
+
+    let elemBall = document.getElementById('ball');
+
+    elemBall.style.left = (elemField.clientWidth / 2) - (elemBall.offsetWidth / 2) + 'px';
+    elemBall.style.top = (elemField.clientHeight / 2) - (elemBall.offsetHeight / 2) + 'px';
+
+  </script>
+
+</body>
+
+</html>
