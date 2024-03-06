@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #contents {
+            padding: 5px;
+            border: 1px green solid;
+        }
+    </style>
+</head>
+
+<body>
+
+<fieldset id="contents">
+    <legend>#contents</legend>
+    <p>
+        Как насчёт того, чтобы прочитать <a href="https://wikipedia.org">Википедию</a> или посетить <a href="https://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+    </p>
+</fieldset>
+<script>
+    document.getElementById('contents').addEventListener('click', function (event){
+        if (event.target.closest('a')){
+            event.preventDefault();// Отменяем стандартное перенаправление
+            const url = event.target.closest('a').getAttribute('href');// Получаем адрес ссылки
+            if(confirm(`You want to follow the link to ${url}?`)){
+                window.location.href = url;// Перенаправляем пользователя на указанный URL
+            }
+        }
+    })
+</script>
+</body>
+</html>
+
+<!--
+Метод closest('a') в JavaScript используется для поиска ближайшего родительского элемента, который соответствует указанному селектору. В данном случае, 'a' - это селектор, который указывает на элементы типа a (ссылки).
+
+Итак, метод closest('a') ищет ближайший (родительский или сам элемент, если он соответствует селектору) элемент с тегом a. В вашем примере, если текущий элемент или какой-либо его родительский элемент является ссылкой (<a>), то метод closest('a') найдет этот элемент.-->
