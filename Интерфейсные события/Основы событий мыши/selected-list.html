@@ -25,28 +25,33 @@
     <li>Тигра</li>
     <li>Кенга</li>
     <li>Кролик. Просто Кролик.</li>
+    ddd
 </ul>
 
 <script>
-    document.getElementById('ul').addEventListener('click', function (event){
-        event.preventDefault();
-        const clickedElement = event.target;
+    const ulElement = document.getElementById('ul');
+    ulElement.addEventListener('mousedown', function (event) {
+        event.preventDefault();// предотвращает ненужное выделение элементов списка при клике
+        if (event.target.tagName !== "LI") return;
 
-        // Удаляем класс selected у всех дочерних элементов
-        const children = this.children;
-        for (let i = 0; i < children.length; i++) {
-            children[i].classList.remove('selected');
+        if (event.ctrlKey || event.metaKey) {
+            toggleSelect(event.target);
+        } else {
+            singleSelect(event.target);
         }
-
-        // Добавляем класс selected только кликнутому элементу
-        if (clickedElement !== this) {
-            clickedElement.classList.add('selected');
+        function toggleSelect(li) {
+            li.classList.toggle('selected');//Если класс 'selected' уже присутствует у элемента, то он будет удален, а если отсутствует, то будет добавлен.
         }
-
+        function singleSelect(li) {
+            // Удаляем класс selected у всех дочерних элементов
+            let selected = ulElement.querySelectorAll('.selected');
+            for (let elem of selected) {
+                elem.classList.remove('selected');
+            }
+            // Добавляем класс selected только кликнутому элементу
+            li.classList.add('selected');
+        }
     })
-    document.getElementById('ul').onmousedown = function() {
-        return false;
-    };
 </script>
 
 </body>
