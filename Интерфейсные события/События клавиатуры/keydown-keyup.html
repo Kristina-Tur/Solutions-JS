@@ -10,14 +10,16 @@
 <body>
 <p>Нажмите "Q" и "W" вместе (язык значения не играет).</p>
 <script>
-    //
-    function runOnKeys(func, ...codes){
+    /*Создадим множество pressed = new Set(), в которое будем записывать клавиши, нажатые в данный момент.
+        В первом обработчике будем добавлять в него значения, а во втором удалять. Каждый раз, как отрабатывает keydown, будем проверять – все ли нужные клавиши нажаты, и, если да – выводить сообщение.*/
+    function runOnKeys(func, ...codes) {
         let pressed = new Set;
 
         document.addEventListener('keydown', function (event) {
             pressed.add(event.code);
+            // все ли клавиши из набора нажаты?Проверяем в цикле
             for (const code of codes) {
-                if (!pressed.has(code)){
+                if (!pressed.has(code)) {
                     return
                 }
             }
@@ -25,7 +27,7 @@
             func();
         })
 
-        document.addEventListener('keyup', function (event){
+        document.addEventListener('keyup', function (event) {
             pressed.delete(event.code)
         })
     }
