@@ -33,7 +33,8 @@
 </div>
 
 <script>
-    let thumb = slider.querySelector('.thumb');
+    const slider = document.querySelector('.slider');
+    const thumb = slider.querySelector('.thumb');
 
     thumb.onmousedown = function(event) {
         event.preventDefault(); // предотвратить запуск выделения (действие браузера)
@@ -66,7 +67,7 @@
 
     };
 
-    thumb.ondragstart = function() {
+    thumb.ondragstart = function() {//не забудьте отменить браузерный ondragstart
         return false;
     };
 
